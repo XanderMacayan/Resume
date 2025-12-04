@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xander G. Macayan - Dashboard Resume</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        .card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #3b82f6; /* Tailwind blue-500 */
+        }
+        /* Style for the static resume section for a clean, print-like look */
+        .static-resume-section {
+            border-bottom: 2px solid #e5e7eb; /* gray-200 */
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        /* Print Styles - Optional, but good practice */
+        @media print {
+            body {
+                background-color: white !important;
+                padding: 0;
+            }
+            .max-w-7xl {
+                max-width: none !important;
+            }
+            header, #dashboard-view, #detail-view {
+                display: none !important;
+            }
+            #original-resume-view {
+                display: block !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto">
+
+        <!-- HEADER / MAIN PROFILE CARD (Always visible) -->
+        <header class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-8 md:flex md:items-center">
+            <!-- Updated image source to Photo.png -->
+            <img src="Photo.png" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/120x120/1d4ed8/ffffff?text=XG';"
+                 alt="Profile Photo" class="w-24 h-24 rounded-full object-cover ring-4 ring-blue-500/50 mb-4 md:mb-0 md:mr-6 mx-auto md:mx-0">
+            <div class="text-center md:text-left flex-grow">
+                <h1 class="text-4xl font-extrabold text-gray-900">Xander G. Macayan</h1>
+                <p class="text-xl font-medium text-blue-600 mt-1">BS Information Technology Student / Aspiring Developer</p>
+                <div class="mt-3 flex flex-col sm:flex-row sm:space-x-4 justify-center md:justify-start text-gray-600 text-sm">
+                    <span class="flex items-center justify-center md:justify-start"><i data-lucide="phone" class="w-4 h-4 mr-1 text-gray-400"></i> +63 923 166 1723</span>
+                    <span class="flex items-center justify-center md:justify-start"><i data-lucide="mail" class="w-4 h-4 mr-1 text-gray-400"></i> xander.macayan@neu.edu.ph</span>
+                    <span class="flex items-center justify-center md:justify-start"><i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gray-400"></i> Quezon City, Philippines</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 1. DASHBOARD VIEW (GRID) -->
+        <main id="dashboard-view" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1: PROFILE SUMMARY -->
+            <div id="profile-card" 
+                 class="card bg-white p-6 rounded-xl shadow-md border border-gray-200 col-span-1 lg:col-span-2" 
+                 onclick="showSectionDetail('Profile Summary')">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="user-check" class="w-6 h-6 text-blue-500 mr-3"></i>
+                    <h2 class="text-xl font-semibold text-gray-800">Profile Summary</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed line-clamp-3">
+                    Motivated and disciplined IT student with beginner skills in programming,
+                    web development, and database basics. Familiar with Java, JavaScript,
+                    HTML, CSS, and SQL. Fast learner, organized, and eager to gain internship
+                    experience in real-world environments.
+                </p>
+                <button class="mt-4 text-blue-600 font-medium hover:text-blue-800 transition duration-150">View Details &rarr;</button>
+            </div>
+
+            <!-- Card 2: TECHNICAL SKILLS -->
+            <div id="skills-card" 
+                 class="card bg-white p-6 rounded-xl shadow-md border border-gray-200" 
+                 onclick="showSectionDetail('Technical Skills')">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="cpu" class="w-6 h-6 text-green-500 mr-3"></i>
+                    <h2 class="text-xl font-semibold text-gray-800">Technical Skills</h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Java</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                    <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">HTML / CSS</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SQL (Basic)</span>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Design Thinking</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Video Editing</span>
+                </div>
+            </div>
+
+            <!-- Card 3: EDUCATION -->
+            <div id="education-card" 
+                 class="card bg-white p-6 rounded-xl shadow-md border border-gray-200 lg:col-span-2" 
+                 onclick="showSectionDetail('Education History')">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-indigo-500 mr-3"></i>
+                    <h2 class="text-xl font-semibold text-gray-800">Education Timeline</h2>
+                </div>
+                <ol class="relative border-l border-gray-200 ml-3">
+                    <li class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-3 h-3 bg-indigo-200 rounded-full -left-1.5 ring-4 ring-white"></span>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">BS Information Technology</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">2024 – Present</time>
+                        <p class="text-base font-normal text-gray-600">New Era University, Quezon City</p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-3 h-3 bg-indigo-200 rounded-full -left-1.5 ring-4 ring-white"></span>
+                        <h3 class="text-lg font-semibold text-gray-900">Senior High School</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">2020 – 2024</time>
+                        <p class="text-base font-normal text-gray-600">San Francisco High School. Graduated <span class="font-medium text-green-700">With Academic Excellence</span>.</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Card 4: RELEVANT PROJECTS -->
+            <div id="projects-card" 
+                 class="card bg-white p-6 rounded-xl shadow-md border border-gray-200" 
+                 onclick="showSectionDetail('Relevant Projects')">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="code" class="w-6 h-6 text-orange-500 mr-3"></i>
+                    <h2 class="text-xl font-semibold text-gray-800">Relevant Projects</h2>
+                </div>
+                <dl class="space-y-4 text-gray-700">
+                    <div>
+                        <dt class="font-medium text-gray-900">Responsive Portfolio Website</dt>
+                        <dd class="text-sm">Developed using HTML and CSS to display academic projects.</dd>
+                    </div>
+                    <div>
+                        <dt class="font-medium text-gray-900">Java-Based Inventory System</dt>
+                        <dd class="text-sm">Created a simple inventory management tool using Java and SQL basics.</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <!-- Card 5: ACHIEVEMENTS & LANGUAGES -->
+            <div id="misc-card" 
+                 class="card bg-white p-6 rounded-xl shadow-md border border-gray-200 col-span-1 lg:col-span-3"
+                 onclick="showSectionDetail('Achievements')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="award" class="w-5 h-5 text-red-500 mr-2"></i>
+                            <h3 class="text-lg font-semibold text-gray-800">Key Achievements</h3>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                            <li>Senior High With Honors</li>
+                            <li>Consistent Academic Performer</li>
+                            <li>PSAM Volleyball Tournament Player</li>
+                            <li>Elementary Honor Student</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="globe" class="w-5 h-5 text-teal-500 mr-2"></i>
+                            <h3 class="text-lg font-semibold text-gray-800">Languages</h3>
+                        </div>
+                        <p>English: <span class="font-medium text-gray-900">Fluent</span></p>
+                        <p>Filipino: <span class="font-medium text-gray-900">Fluent</span></p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- 2. DETAIL VIEW (Initially hidden) -->
+        <div id="detail-view" class="hidden">
+            <!-- Content is injected here via JavaScript -->
+        </div>
+
+        <!-- 3. ORIGINAL / STATIC RESUME VIEW (Always Visible Below Dashboard) -->
+        <section id="original-resume-view" class="mt-16 pt-8 border-t-4 border-gray-300">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Static Resume View (For Printing/Review)</h2>
+            
+            <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-200">
+                
+                <!-- Summary -->
+                <div class="static-resume-section">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Profile Summary</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Motivated and disciplined IT student with beginner skills in programming,
+                        web development, and database basics. Familiar with Java, JavaScript,
+                        HTML, CSS, and SQL. Fast learner, organized, and eager to gain internship
+                        experience in real-world environments. Primary objective is to secure an IT internship 
+                        to apply foundational knowledge and contribute to real-world development projects.
+                    </p>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="static-resume-section">
+                    <h3 class="text-xl font-semibold text-green-600 mb-3">Technical Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">Java (OOP Basics)</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">JavaScript</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">HTML5 / CSS3 (Responsive Design)</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">SQL (CRUD Operations)</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">Tailwind CSS</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">Microsoft Office Suite</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">Video Editing</span>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="static-resume-section">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">Education History</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-bold text-lg text-gray-900">BS Information Technology</p>
+                            <p class="text-sm text-gray-600">New Era University, Quezon City | 2024 – Present</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg text-gray-900">Senior High School (Academic Track)</p>
+                            <p class="text-sm text-gray-600">San Francisco High School | 2020 – 2024</p>
+                            <p class="text-sm mt-1 text-gray-700 italic">Graduated With Academic Excellence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="static-resume-section">
+                    <h3 class="text-xl font-semibold text-orange-600 mb-3">Relevant Projects</h3>
+                    <ul class="list-disc list-outside ml-6 text-gray-700 space-y-3">
+                        <li>
+                            <p class="font-medium text-gray-900">Responsive Portfolio Website</p>
+                            <p class="text-sm">Developed using HTML, CSS, and Tailwind CSS. Focused on mobile-first design and accessibility standards to showcase academic work.</p>
+                        </li>
+                        <li>
+                            <p class="font-medium text-gray-900">Java-Based Inventory System</p>
+                            <p class="text-sm">Command-line tool utilizing Java (OOP) and basic SQL logic to manage product stock and transactions.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Achievements & Languages -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-red-600 mb-3">Key Achievements</h3>
+                        <ul class="list-disc list-outside ml-6 text-gray-700 space-y-1">
+                            <li>Senior High With Honors</li>
+                            <li>Consistent Academic Performer (College)</li>
+                            <li>PSAM Volleyball Tournament Player</li>
+                            <li>Elementary Honor Student</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-teal-600 mb-3">Languages</h3>
+                        <p class="text-gray-700">English: <span class="font-medium text-gray-900">Fluent (Professional Working Proficiency)</span></p>
+                        <p class="text-gray-700">Filipino: <span class="font-medium text-gray-900">Fluent (Native Proficiency)</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Function to show the main dashboard (Grid view)
+        function showDashboard() {
+            document.getElementById('dashboard-view').classList.remove('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+            // Scroll to top for a better page transition feel
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Function to generate and show the detailed content for a section
+        function showSectionDetail(sectionName) {
+            const detailView = document.getElementById('detail-view');
+            const content = generateDetailContent(sectionName);
+            
+            // Hide dashboard, show detail view
+            document.getElementById('dashboard-view').classList.add('hidden');
+            detailView.classList.remove('hidden');
+            
+            // Populate content
+            detailView.innerHTML = content;
+            
+            // Re-render lucide icons for the newly added HTML content
+            lucide.createIcons();
+            
+            // Scroll to top for a better page transition feel
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Function containing the detailed HTML content for each section
+        function generateDetailContent(sectionName) {
+            // Header for the detail view with a back button
+            let detailHtml = `<button onclick="showDashboard()" class="text-blue-600 hover:text-blue-800 flex items-center text-lg font-medium mb-6 transition duration-150">
+                                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                                Back to Dashboard
+                              </button>
+                              <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                                  <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">${sectionName} Details</h2>`;
+
+            // Detailed Content
+            switch (sectionName) {
+                case 'Profile Summary':
+                    detailHtml += `<p class="text-gray-700 leading-relaxed">This section provides an in-depth look at my professional philosophy and career goals. My primary objective is to secure an IT internship where I can apply my foundational knowledge in Java and web technologies (HTML, CSS, JavaScript) to solve real-world problems. I am committed to continuous learning and bringing a disciplined, organized approach to any development team.</p>
+                                   <p class="mt-6 font-semibold text-gray-900 border-t pt-4">Key Focus Areas</p>
+                                   <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                       <li>Object-Oriented Programming principles (Java).</li>
+                                       <li>Front-end development responsiveness and accessibility using CSS frameworks.</li>
+                                       <li>Basic database design and CRUD query optimization (SQL).</li>
+                                       <li>IT Support and Troubleshooting fundamentals.</li>
+                                   </ul>`;
+                    break;
+                case 'Technical Skills':
+                    detailHtml += `<p class="text-gray-700">A detailed breakdown of my technical proficiencies, demonstrating a strong foundation for rapid skill acquisition:</p>
+                                   <div class="mt-4 space-y-4">
+                                       <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                                           <h4 class="font-bold text-gray-900">Programming Languages</h4>
+                                           <p class="text-sm text-gray-700"><strong>Java:</strong> Competent in basic OOP concepts and building simple desktop applications. <strong>JavaScript:</strong> Used for interactive web elements and DOM manipulation.</p>
+                                       </div>
+                                       <div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
+                                           <h4 class="font-bold text-gray-900">Web Technologies</h4>
+                                           <p class="text-sm text-gray-700">Expertise in <strong>HTML5</strong> structure and semantic markup, and <strong>CSS3</strong> for responsive design and modern styling (including frameworks like Tailwind CSS).</p>
+                                       </div>
+                                       <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                                           <h4 class="font-bold text-gray-900">Data & Tools</h4>
+                                           <p class="text-sm text-gray-700">Basic <strong>SQL</strong> proficiency for database definition and manipulation. Highly proficient in Microsoft Office Suite and modern computer literacy.</p>
+                                       </div>
+                                   </div>`;
+                    break;
+                case 'Education History':
+                    detailHtml += `<p class="text-gray-700">Detailed educational background illustrating a commitment to academic excellence:</p>
+                                   <div class="mt-6 space-y-6">
+                                       <div class="p-4 border-l-4 border-indigo-500 bg-indigo-50 rounded-lg">
+                                           <h4 class="font-bold text-xl text-gray-900">BS Information Technology</h4>
+                                           <p class="text-gray-700">New Era University, Quezon City | <em>2024 – Present</em></p>
+                                           <p class="text-sm mt-2 text-gray-600">Currently enrolled in core IT curriculum covering networking, system analysis, algorithm development, and enterprise computing concepts.</p>
+                                       </div>
+                                       <div class="p-4 border-l-4 border-green-500 bg-green-50 rounded-lg">
+                                           <h4 class="font-bold text-xl text-gray-900">Senior High School (Academic Track)</h4>
+                                           <p class="text-gray-700">San Francisco High School | <em>2020 – 2024</em></p>
+                                           <p class="text-sm mt-2 text-gray-600">Graduated <strong>With Academic Excellence</strong>. Focused track on Information and Communication Technology (ICT) including fundamental exposure to programming and digital media.</p>
+                                       </div>
+                                   </div>`;
+                    break;
+                case 'Relevant Projects':
+                    detailHtml += `<p class="text-gray-700">Practical application of technical knowledge through personal and academic projects:</p>
+                                   <div class="mt-6 space-y-6">
+                                       <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-lg">
+                                           <h4 class="font-bold text-xl text-gray-900">Responsive Portfolio Website</h4>
+                                           <p class="text-gray-700"><strong>Technologies:</strong> HTML, CSS, Tailwind CSS</p>
+                                           <p class="text-sm mt-2 text-gray-600">Designed and developed a fully responsive personal portfolio. Focused on ensuring mobile-first design principles, accessibility standards, and clean, modular CSS structure.</p>
+                                       </div>
+                                       <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-lg">
+                                           <h4 class="font-bold text-xl text-gray-900">Java-Based Inventory System</h4>
+                                           <p class="text-gray-700"><strong>Technologies:</strong> Java, Basic SQL (simulated)</p>
+                                           <p class="text-sm mt-2 text-gray-600">A command-line tool developed to manage product inventory. This project solidified understanding of fundamental Java syntax, data structures, and object-oriented design principles.</p>
+                                       </div>
+                                   </div>`;
+                    break;
+                case 'Achievements':
+                    detailHtml += `<p class="text-gray-700">Highlighting performance and dedication in both academic and extracurricular fields:</p>
+                                   <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                       <div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
+                                           <h4 class="font-bold text-gray-900 mb-2">Academic Excellence</h4>
+                                           <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                                <li>Senior High With Honors</li>
+                                                <li>Consistent Academic Performer (College)</li>
+                                                <li>Elementary Honor Student</li>
+                                           </ul>
+                                       </div>
+                                       <div class="p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
+                                           <h4 class="font-bold text-gray-900 mb-2">Communication & Sports</h4>
+                                           <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                                <li>Fluent in English and Filipino (Tagalog).</li>
+                                                <li>PSAM Volleyball Tournament Player (Demonstrates commitment, discipline, and teamwork).</li>
+                                           </ul>
+                                       </div>
+                                   </div>`;
+                    break;
+                default:
+                    detailHtml += `<p class="text-gray-700">Error: Detailed content page not found.</p>`;
+            }
+
+            detailHtml += `</div>`;
+            return detailHtml;
+        }
+    </script>
+</body>
+</html>
